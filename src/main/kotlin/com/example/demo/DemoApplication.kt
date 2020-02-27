@@ -56,14 +56,14 @@ class TestConsumer() {
     private val logger: Log = LogFactory.getLog(javaClass)
 
     @Bean
-    fun consume1(): Consumer<String> = Consumer {
-        logger.info("==============>consume1")
+    fun consume1(): Consumer<Message<String>> = Consumer {
+        logger.info("==============>consume1 messge [[payload=${it.payload}, headers=${it.headers}]]")
         restTemplate.getForEntity("$destResourceUrl/customer-1", String::class.java)
     }
 
     @Bean
-    fun consume2(): Consumer<String> = Consumer {
-        logger.info("==============>consume2")
+    fun consume2(): Consumer<Message<String>> = Consumer {
+        logger.info("==============>consume2 messge [[payload=${it.payload}, headers=${it.headers}]]")
         restTemplate.getForEntity("$destResourceUrl/customer-2", String::class.java)
     }
 }
