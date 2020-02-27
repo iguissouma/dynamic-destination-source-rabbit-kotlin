@@ -1,0 +1,17 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+spring.cloud.stream:
+  function.definition: supplier;receive1;receive2;consume1;consume2
+  function.routing:
+    enabled: true
+
+  bindings:
+    consume1-in-0.destination: consumer
+    consume1-in-0.group: app
+    consume2-in-0.destination: consumer
+    consume2-in-0.group: app
+    receive1-in-0.destination: customer-1
+    receive1-in-0.group: customer-1
+    receive2-in-0.destination: customer-2
+    receive2-in-0.group: customer-2
